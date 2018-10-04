@@ -64,31 +64,29 @@ def getNPChunks(loc, strg):
             NP_chunk.append(strg[start : end])
     return NP_chunk
 
-#set the path to the split data files
-inputData = 'C:/Users/leonard.wee/OneDrive - Maastro - Clinic/Running_Grants/SARRLEK/chunk_process_filter/Data/*.xml'
-processed_loc = 'C:/Users/leonard.wee/OneDrive - Maastro - Clinic/Running_Grants/SARRLEK/chunk_process_filter/Processed/'
+if __name__ == '__main__':
+    #set the path to the split data files
+    inputData = 'C:/Users/leonard.wee/OneDrive - Maastro - Clinic/Running_Grants/SARRLEK/chunk_process_filter/Data/*.xml'
+    processed_loc = 'C:/Users/leonard.wee/OneDrive - Maastro - Clinic/Running_Grants/SARRLEK/chunk_process_filter/Processed/'
 
-All_xml = glob.iglob(inputData, recursive=True)
-XML_tokens = []
-for j, filename in enumerate(All_xml):
-    XML_tokens = getTokens(filename)
-    if CancerTerms(XML_tokens)|PossibleCancerTerms(XML_tokens) :
-        strg = GetString(filename)
-        NP_chunks = getNPChunks(filename, strg)
-        for i, chunk in enumerate(NP_chunks):
-            #--------------------- @Chaitanya :
-            #--------------------- I think here we need to check if part or all of the chunk
-            #--------------------- matches something in the CLEVER dictionary
-            #--------------------- and if so substitute the part that matches
-            with open(processed_loc + "chunk_" + str(j) + "_" + str(i) + ".pkl", "wb") as output_file:
-                #----------------- @Chaitanya :
-                #----------------- I assume writing each chunk in its own j_i pickle will be
-                #----------------- useful later when we do the chunk entropy to filter out all
-                #----------------- of the extremely frequent and extremely rare chunks?
-                pickle.dump(chunk, output_file)
-                output_file.close()
-    else:
-        pass
-
-
-
+    All_xml = glob.iglob(inputData, recursive=True)
+    XML_tokens = []
+    for j, filename in enumerate(All_xml):
+        XML_tokens = getTokens(filename)
+        if CancerTerms(XML_tokens)|PossibleCancerTerms(XML_tokens) :
+            strg = GetString(filename)
+            NP_chunks = getNPChunks(filename, strg)
+            for i, chunk in enumerate(NP_chunks):
+                #--------------------- @Chaitanya :
+                #--------------------- I think here we need to check if part or all of the chunk
+                #--------------------- matches something in the CLEVER dictionary
+                #--------------------- and if so substitute the part that matches
+                with open(processed_loc + "chunk_" + str(j) + "_" + str(i) + ".pkl", "wb") as output_file:
+                    #----------------- @Chaitanya :
+                    #----------------- I assume writing each chunk in its own j_i pickle will be
+                    #----------------- useful later when we do the chunk entropy to filter out all
+                    #----------------- of the extremely frequent and extremely rare chunks?
+                    pickle.dump(chunk, output_file)
+                    output_file.close()
+        else:
+            pass
