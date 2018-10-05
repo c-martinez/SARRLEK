@@ -17,11 +17,3 @@ Once we have all the terms we are intrested we look upto 3 levels below the curr
 Once we have all the data we convert them into Pandas and further create a list of all the words obtained so that it can be more easily managed.
 
 In this I have tried to retrieve all the data for lung, if one is interested in getting data for terms, in the SPARQL code search for filter and replace lung with the word you want to retrieve data for.
-
-
-
-Libraries :
-
-* Pandas
-
-* rdflib
