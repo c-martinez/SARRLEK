@@ -11,7 +11,7 @@ class CleverParser():
         tag = self.clever[self.clever['word']==word]['token'].tolist()[0]
         return tag
 
-    def trieReplacement(self, sentence):
+    def replacement(self, sentence):
         replacements = []
 
         # Trie finds us a word from clever terminology in a sentence, and the index
