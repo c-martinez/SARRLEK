@@ -1,0 +1,13 @@
+SELECT ?country_name ?currency_name ?population
+WHERE {
+  ?country rdf:type dbo:Country .
+  ?country dbo:currency ?currency .
+
+  ?currency rdfs:label ?currency_name .
+  ?country rdfs:label  ?country_name .
+  ?country dbo:populationTotal ?population
+
+  FILTER (lang(?currency_name) = 'en')
+  FILTER (lang(?country_name) = 'en')
+  FILTER (?population > 500000)
+} LIMIT 5000
