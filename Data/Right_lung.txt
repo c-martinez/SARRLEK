@@ -1,0 +1,36 @@
+|keys|meanings
+0|right lung|lower lobe of right lung
+1|right lung|posterior basal segment of lower lobe of right lung
+2|right lung|right upper lobe
+3|right lung|S5 segment of middle lobe of right lung
+4|right lung|anterior segment of upper lobe of right lung
+5|right lung|RLL
+6|right lung|middle lobe of lung
+7|right lung|middle lobe of right lung
+8|right lung|S4 segment of middle lobe of right lung
+9|right lung|posterior segment of upper lobe of right lung
+10|right lung|lateral basal segment of lower lobe of right lung
+11|right lung|lateral segment of middle lobe of right lung
+12|right lung|upper lobe of right lung
+13|right lung|S10 segment of lower lobe of right lung
+14|right lung|S8 segment of lower lobe of right lung
+15|right lung|right lower lung zone
+16|right lung|S7 segment of lower lobe of right lung
+17|right lung|medial segment of middle lobe of right lung
+18|right lung|S6 segment of lower lobe of right lung
+19|right lung|S2 segment of upper lobe of right lung
+20|right lung|S1 segment of upper lobe of right lung
+21|right lung|right middle lobe
+22|right lung|S9 segment of lower lobe of right lung
+23|right lung|axillary region of right lung
+24|right lung|S3 segment of upper lobe of right lung
+25|right lung|right lower lobe
+26|right lung|anterior basal segment of lower lobe of right lung
+27|right lung|RML
+28|right lung|apical segment of upper lobe of right lung
+29|right lung|medial basal segment of lower lobe of right lung
+30|right lung|right mid lung zone
+31|right lung|left upper lung zone
+32|right lung|RUL
+33|right lung|right upper lung zone
+34|right lung|superior segment of lower lobe of right lung
