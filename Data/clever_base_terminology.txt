@@ -1,3 +1,4 @@
+id|meanings|keys
 1|.|DOT
 2|,|PUNCT
 3|;|PUNCT

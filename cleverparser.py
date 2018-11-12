@@ -2,8 +2,14 @@ import pandas as pd
 import trie_search
 
 class CleverParser():
-    def __init__(self, cleverfile):
-        self.clever = pd.read_csv(cleverfile, sep='|', names=['id', 'word', 'token'])
+    def __init__(self, cleverfile=None):
+        self.clever = pd.DataFrame(columns=['word', 'token'])
+        if cleverfile:
+            self.addTermDictionary(cleverfile)
+
+    def addTermDictionary(self, cleverfile):
+        newDict = pd.read_csv(cleverfile, sep='|', names=['word', 'token'], skiprows=1, usecols=[1,2])
+        self.clever = pd.concat([self.clever, newDict], ignore_index=True)
         clever_words = self.clever['word'].tolist()
         self.trie = trie_search.TrieSearch(clever_words)
 
