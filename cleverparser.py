@@ -3,18 +3,25 @@ import trie_search
 
 class CleverParser():
     def __init__(self, cleverfile=None):
-        self.clever = pd.DataFrame(columns=['word', 'token'])
+        self.__wordColumn__ = 'word'
+        self.__tokenColumn__ = 'token'
+        self.clever = pd.DataFrame(columns=[self.__wordColumn__, 'token'])
         if cleverfile:
             self.addTermDictionary(cleverfile)
 
     def addTermDictionary(self, cleverfile):
-        newDict = pd.read_csv(cleverfile, sep='|', names=['word', 'token'], skiprows=1, usecols=[1,2])
-        self.clever = pd.concat([self.clever, newDict], ignore_index=True)
-        clever_words = self.clever['word'].tolist()
+        cleverDf = pd.read_csv(cleverfile, sep='|', names=[self.__wordColumn__, self.__tokenColumn__], skiprows=1, usecols=[1,2])
+        self.addTermDataFrame(cleverDf)
+
+    def addTermDataFrame(self, cleverDf):
+        assert self.__wordColumn__ in cleverDf.columns, "'%s' column missing from DataFrame"%self.__wordColumn__
+        assert self.__tokenColumn__ in cleverDf.columns, "'%s' column missing from DataFrame"%self.__tokenColumn__
+        self.clever = pd.concat([self.clever, cleverDf], ignore_index=True)
+        clever_words = self.clever[self.__wordColumn__].tolist()
         self.trie = trie_search.TrieSearch(clever_words)
 
     def getTokenForWord(self, word):
-        tag = self.clever[self.clever['word']==word]['token'].tolist()[0]
+        tag = self.clever[self.clever[self.__wordColumn__]==word][self.__tokenColumn__].tolist()[0]
         return tag
 
     def replacement(self, sentence):
