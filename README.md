@@ -28,3 +28,8 @@ training topic model:
 ```
 python buildlda.py --in Data/ct_report_dmg_thoracic_only_CLEAN.csv --out-dict Data/ct_report_topics.dict --out-model Data/ct_report_topics.lda --out-topics Data/ct_report_topics.csv
 ```
+
+training flair model:
+```
+python buildflair.py --in-reports=Data/ct_report_dmg_thoracic_only_CLEAN.csv --in-classes=Data/classes.csv --cancer-classifier=out/classifier_cancer --prog-classifier=out//classifier_prog
+```
