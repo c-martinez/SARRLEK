@@ -19,6 +19,11 @@ data preparation:
 python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN.csv
 ```
 
+data preparation (with additional structurize step):
+```
+python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN_STRUCT.csv --structurize
+```
+
 training word2vec model:
 ```
 python buildw2v.py --in Data/ct_report_dmg_thoracic_only_CLEAN.csv --out Data/ct_report_model.w2v --vectors Data/ct_report_vectors.csv

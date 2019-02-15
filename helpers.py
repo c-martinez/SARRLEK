@@ -51,12 +51,50 @@ def textCleanup(text):
 
     return ' '.join(tokens)
 
-def normalize(text, parser=None):
+def CreateHirarchy(txt):
+    lst_Of_Sen = txt.split("PERIOD")
+    hirarchy_1 = []
+    hirarchy_2 = []
+    hirarchy_3 = []
+    others = []
+
+    for sen in lst_Of_Sen:
+        if ("LUNG_MASS" or "LUNG_CARCINOMA" or "LUNG_NODULE" or "LUNG_CARCINOMA") in sen:
+            hirarchy_1.append(sen)
+            continue
+        if ("RIGHT_LUNG" or "LEFT_LUNG" or "LUNG" or "LUNG_NON_SMALL_CELL" or "LUNG_SMALL_CELL") in sen:
+            hirarchy_2.append(sen)
+            continue
+        if ("LESION " or "MASS" or "CHEST_MASS" or "CARCINOMA" or "CONTRAST_ENHANCED_CT_SCAN") in sen:
+            hirarchy_3.append(sen)
+            continue
+        others.append(sen)
+    return hirarchy_1, hirarchy_2, hirarchy_3, others
+
+
+def Structurize_report(hirarchy_1, hirarchy_2, hirarchy_3, others):
+    Structured_Report = ''
+
+    for i in hirarchy_1:
+        Structured_Report = Structured_Report + i + " DOT "
+    for i in hirarchy_2:
+        Structured_Report = Structured_Report + i + " DOT "
+    for i in hirarchy_3:
+        Structured_Report = Structured_Report + i + " DOT "
+    for i in others:
+        Structured_Report = Structured_Report + i + " DOT "
+
+    return Structured_Report
+
+
+def normalize(text, parser=None, structurize=False):
     text = replaceDates(text)
     text = replacePunctuation(text)
     if parser is not None:
         text = parser.replacement(text)
     text = textCleanup(text)
+    if structurize:
+        text = Structurize_report(CreateHirarchy(text))
     return text
 
 

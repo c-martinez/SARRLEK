@@ -13,14 +13,11 @@ from docopt import docopt
 
 import pandas as pd
 import chardet
-import csv
-import tempfile
 
 from flair.data_fetcher import NLPTaskDataFetcher
 from flair.embeddings import WordEmbeddings, FlairEmbeddings, DocumentLSTMEmbeddings
 from flair.models import TextClassifier
 from flair.trainers import ModelTrainer
-from pathlib import Path
 
 from tempfile import TemporaryDirectory
 

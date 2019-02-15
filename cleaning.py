@@ -1,13 +1,14 @@
 """Cleaning up script.
 
 Usage:
-  cleaning.py --in=<infile> --out=<outfile>
+  cleaning.py --in=<infile> --out=<outfile> [--structurize]
 
 Options:
   --in=<infile>    Input file with radiology reports
                    Input file is expected to have two columns: one with the
                    report id, and another with the report text.
-  --out=<outfile>  Output file with cleaned radiology reports
+  --out=<outfile>  Output file with cleaned radiology reports.
+  --structurize    Apply additional structurize step.
 """
 from docopt import docopt
 
@@ -24,6 +25,7 @@ if __name__ == '__main__':
 
     datafile = arguments['--in']
     outfile = arguments['--out']
+    structurize = arguments['--structurize']
 
     print('Loading data...')
     rawfile = open(datafile, 'rb').read()
