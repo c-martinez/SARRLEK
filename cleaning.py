@@ -32,6 +32,7 @@ if __name__ == '__main__':
     print('Loading data...')
     rawfile = open(datafile, 'rb').read()
     encodeInfo = chardet.detect(rawfile[:10000])
+    print('encodeInfo: ',encodeInfo)
     df_cases = pd.read_csv(datafile, encoding=encodeInfo['encoding'], names=['id', 'transcript'])
 
     print('Loading dictionaries...')

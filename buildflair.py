@@ -63,7 +63,8 @@ if __name__ == '__main__':
 
     # Load reports and classification labels
     rawfile = open(cleanDatafile, 'rb').read()
-    encodeInfo = chardet.detect(rawfile[:10000])
+    encodeInfo = chardet.detect(rawfile[:30000])
+    print('encodeInfo: ',encodeInfo)
     df_cases = pd.read_csv(cleanDatafile, encoding=encodeInfo['encoding'], names=['id', 'normalized'])
     df_cases = df_cases.fillna('')
     df_classes = pd.read_csv(classesfile, sep=',', names=['ID', 'Cancer', 'Prog'])
@@ -74,9 +75,9 @@ if __name__ == '__main__':
     # We do not know if cases with multiple reports contain useful information
     # on the first report or the last one. So I will ignore these cases.
     # Keeping only cases with only 1 report
-    df_counts = df_unified.groupby('id')['id'].count().reset_index(name="count")
-    df_unified = pd.merge(df_unified, df_counts, how='outer', left_on='id', right_on='id')
-    df_unified = df_unified[df_unified['count']==1].copy()
+    # df_counts = df_unified.groupby('id')['id'].count().reset_index(name="count")
+    # df_unified = pd.merge(df_unified, df_counts, how='outer', left_on='id', right_on='id')
+    # df_unified = df_unified[df_unified['count']==1].copy()
 
     # Discard unlabeled reports
     df_labeled = df_unified[df_unified['Cancer'].notna()].copy()
