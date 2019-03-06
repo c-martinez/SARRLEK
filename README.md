@@ -16,12 +16,12 @@ python scripts:
 
 data preparation:
 ```
-python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN.csv
+python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN.csv --augment-data
 ```
 
 data preparation (with additional structurize step):
 ```
-python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN_STRUCT.csv --structurize
+python cleaning.py --in=Data/ct_report_dmg_thoracic_only.csv --out=Data/ct_report_dmg_thoracic_only_CLEAN_STRUCT.csv --augment-data --structurize
 ```
 
 training word2vec model:
@@ -36,5 +36,5 @@ python buildlda.py --in Data/ct_report_dmg_thoracic_only_CLEAN.csv --out-dict Da
 
 training flair model:
 ```
-python buildflair.py --in-reports=Data/ct_report_dmg_thoracic_only_CLEAN.csv --in-classes=Data/classes.csv --cancer-classifier=out/classifier_cancer --prog-classifier=out//classifier_prog
+python buildflair.py --in-reports=Data/ct_report_dmg_thoracic_only_CLEAN.csv --in-classes=Data/classes.csv --cancer-classifier=out/classifier_cancer --prog-classifier=out/classifier_prog
 ```

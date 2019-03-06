@@ -29,65 +29,6 @@ id|meanings|keys
 27|lung small cell|LUNG_SMALL_CELL
 28|small cell lung|LUNG_SMALL_CELL
 29|sclc|LUNG_SMALL_CELL
-30|left lung|LEFT_LUNG
-31|lt lung|LEFT_LUNG
-32|right lung|RIGHT_LUNG
-33|rt lung|RIGHT_LUNG
-34|left upper lung zone|LEFT_LUNG
-35|superior division of upper lobe of left lung|LEFT_LUNG
-36|S7+8 segment of lower lobe of left lung|LEFT_LUNG
-37|S9 segment of lower lobe of left lung|LEFT_LUNG
-38|lower lobe of left lung|LEFT_LUNG
-39|posterior basal segment of lower lobe of left lung|LEFT_LUNG
-40|axillary region of left lung|LEFT_LUNG
-41|upper lobe of left lung|LEFT_LUNG
-42|left lower lobe|LEFT_LUNG
-43|S6 segment of lower lobe of left lung|LEFT_LUNG
-44|left lower lung zone|LEFT_LUNG
-45|S10 segment of lower lobe of left lung|LEFT_LUNG
-46|lingula|LEFT_LUNG
-47|lateral basal segment of lower lobe of left lung|LEFT_LUNG
-48|LLL|LEFT_LUNG
-49|LUL|LEFT_LUNG
-50|anteromedial basal segment of lower lobe of left lung|LEFT_LUNG
-51|superior segment of lower lobe of left lung|LEFT_LUNG
-52|left mid lung zone|LEFT_LUNG
-53|left upper lobe|LEFT_LUNG
-54|RLL|RIGHT_LUNG
-55|RUL|RIGHT_LUNG
-56|S7 segment of lower lobe of right lung|RIGHT_LUNG
-57|left upper lung zone|RIGHT_LUNG
-58|anterior basal segment of lower lobe of right lung|RIGHT_LUNG
-59|medial basal segment of lower lobe of right lung|RIGHT_LUNG
-60|RML|RIGHT_LUNG
-61|S3 segment of upper lobe of right lung|RIGHT_LUNG
-62|S4 segment of middle lobe of right lung|RIGHT_LUNG
-63|S8 segment of lower lobe of right lung|RIGHT_LUNG
-64|S9 segment of lower lobe of right lung|RIGHT_LUNG
-65|anterior segment of upper lobe of right lung|RIGHT_LUNG
-66|lower lobe of right lung|RIGHT_LUNG
-67|S2 segment of upper lobe of right lung|RIGHT_LUNG
-68|S6 segment of lower lobe of right lung|RIGHT_LUNG
-69|right lower lung zone|RIGHT_LUNG
-70|right middle lobe|RIGHT_LUNG
-71|posterior basal segment of lower lobe of right lung|RIGHT_LUNG
-72|right upper lung zone|RIGHT_LUNG
-73|right upper lobe|RIGHT_LUNG
-74|S5 segment of middle lobe of right lung|RIGHT_LUNG
-75|middle lobe of right lung|RIGHT_LUNG
-76|S10 segment of lower lobe of right lung|RIGHT_LUNG
-77|S1 segment of upper lobe of right lung|RIGHT_LUNG
-78|middle lobe of lung|RIGHT_LUNG
-79|posterior segment of upper lobe of right lung|RIGHT_LUNG
-80|medial segment of middle lobe of right lung|RIGHT_LUNG
-81|right mid lung zone|RIGHT_LUNG
-82|apical segment of upper lobe of right lung|RIGHT_LUNG
-83|right lower lobe|RIGHT_LUNG
-84|lateral segment of middle lobe of right lung|RIGHT_LUNG
-85|superior segment of lower lobe of right lung|RIGHT_LUNG
-86|axillary region of right lung|RIGHT_LUNG
-87|lateral basal segment of lower lobe of right lung|RIGHT_LUNG
-88|upper lobe of right lung|RIGHT_LUNG
-89|lung adenocarcinoma|LUNG_CARCINOMA
-90|adenocarcinoma of lung|LUNG_CARCINOMA
-91|adenocarcinoma lung|LUNG_CARCINOMA
+30|lung adenocarcinoma|LUNG_CARCINOMA
+31|adenocarcinoma of lung|LUNG_CARCINOMA
+32|adenocarcinoma lung|LUNG_CARCINOMA

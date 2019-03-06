@@ -108,6 +108,11 @@ def sparqlToDataframe(qry, endpoint="http://localhost:8890/sparql"):
     resAsStr = res.decode('utf-8')
     return pd.read_csv(StringIO(resAsStr))
 
+def wordsToSingleToken(words):
+    words = words.upper()
+    words = words.replace(' ', '_')
+    return words
+
 def buildTermDict(df, keyColumn, nameCols):
     term_frames = []
     for key, df_key in df.groupby(keyColumn):
@@ -116,10 +121,8 @@ def buildTermDict(df, keyColumn, nameCols):
         allnames = list(set(allnames))
         allnames = [ name for name in allnames if name!='' ]
 
-        key = key.upper()
-        key = key.replace(' ', '_')
         terms = pd.DataFrame(allnames, columns=['meanings'])
-        terms['keys'] = key
+        terms['keys'] = wordsToSingleToken(key)
         term_frames.append(terms)
 
     return pd.concat(term_frames, ignore_index=True)

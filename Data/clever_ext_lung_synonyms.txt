@@ -1,0 +1,59 @@
+id|meanings|keys
+0|S8 segment of lower lobe of right lung|ANTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+1|anterior basal segment of lower lobe of right lung|ANTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+2|S3 segment of upper lobe of right lung|ANTERIOR_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+3|anterior segment of upper lobe of right lung|ANTERIOR_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+4|anteromedial basal segment of lower lobe of left lung|ANTEROMEDIAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+5|S7+8 segment of lower lobe of left lung|ANTEROMEDIAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+6|S1 segment of upper lobe of right lung|APICAL_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+7|apical segment of upper lobe of right lung|APICAL_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+8|axillary region of left lung|AXILLARY_REGION_OF_LEFT_LUNG
+9|axillary region of right lung|AXILLARY_REGION_OF_RIGHT_LUNG
+10|S9 segment of lower lobe of left lung|LATERAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+11|lateral basal segment of lower lobe of left lung|LATERAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+12|lateral basal segment of lower lobe of right lung|LATERAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+13|S9 segment of lower lobe of right lung|LATERAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+14|lateral segment of middle lobe of right lung|LATERAL_SEGMENT_OF_MIDDLE_LOBE_OF_RIGHT_LUNG
+15|S4 segment of middle lobe of right lung|LATERAL_SEGMENT_OF_MIDDLE_LOBE_OF_RIGHT_LUNG
+16|left lower lung zone|LEFT_LOWER_LUNG_ZONE
+17|left lung|LEFT_LUNG
+18|left mid lung zone|LEFT_MID_LUNG_ZONE
+19|left upper lung zone|LEFT_UPPER_LUNG_ZONE
+20|lingula|LINGULA
+21|left lower lobe|LOWER_LOBE_OF_LEFT_LUNG
+22|lower lobe of left lung|LOWER_LOBE_OF_LEFT_LUNG
+23|LLL|LOWER_LOBE_OF_LEFT_LUNG
+24|RLL|LOWER_LOBE_OF_RIGHT_LUNG
+25|right lower lobe|LOWER_LOBE_OF_RIGHT_LUNG
+26|lower lobe of right lung|LOWER_LOBE_OF_RIGHT_LUNG
+27|medial basal segment of lower lobe of right lung|MEDIAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+28|S7 segment of lower lobe of right lung|MEDIAL_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+29|medial segment of middle lobe of right lung|MEDIAL_SEGMENT_OF_MIDDLE_LOBE_OF_RIGHT_LUNG
+30|S5 segment of middle lobe of right lung|MEDIAL_SEGMENT_OF_MIDDLE_LOBE_OF_RIGHT_LUNG
+31|RML|MIDDLE_LOBE_OF_LUNG
+32|middle lobe of right lung|MIDDLE_LOBE_OF_LUNG
+33|right middle lobe|MIDDLE_LOBE_OF_LUNG
+34|middle lobe of lung|MIDDLE_LOBE_OF_LUNG
+35|posterior basal segment of lower lobe of left lung|POSTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+36|S10 segment of lower lobe of left lung|POSTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+37|S10 segment of lower lobe of right lung|POSTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+38|posterior basal segment of lower lobe of right lung|POSTERIOR_BASAL_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+39|posterior segment of upper lobe of right lung|POSTERIOR_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+40|S2 segment of upper lobe of right lung|POSTERIOR_SEGMENT_OF_UPPER_LOBE_OF_RIGHT_LUNG
+41|right lower lung zone|RIGHT_LOWER_LUNG_ZONE
+42|right lung|RIGHT_LUNG
+43|right mid lung zone|RIGHT_MID_LUNG_ZONE
+44|right upper lung zone|RIGHT_UPPER_LUNG_ZONE
+45|superior division of upper lobe of left lung|SUPERIOR_DIVISION_OF_UPPER_LOBE_OF_LEFT_LUNG
+46|superior segment of lower lobe of left lung|SUPERIOR_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+47|S6 segment of lower lobe of left lung|SUPERIOR_SEGMENT_OF_LOWER_LOBE_OF_LEFT_LUNG
+48|superior segment of lower lobe of right lung|SUPERIOR_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+49|S6 segment of lower lobe of right lung|SUPERIOR_SEGMENT_OF_LOWER_LOBE_OF_RIGHT_LUNG
+50|upper lobe of left lung|UPPER_LOBE_OF_LEFT_LUNG
+51|LUL|UPPER_LOBE_OF_LEFT_LUNG
+52|left upper lobe|UPPER_LOBE_OF_LEFT_LUNG
+53|upper lobe of right lung|UPPER_LOBE_OF_RIGHT_LUNG
+54|right upper lobe|UPPER_LOBE_OF_RIGHT_LUNG
+55|RUL|UPPER_LOBE_OF_RIGHT_LUNG
+56|lt lung|LEFT_LUNG
+57|rt lung|RIGHT_LUNG

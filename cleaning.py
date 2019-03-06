@@ -1,7 +1,7 @@
 """Cleaning up script.
 
 Usage:
-  cleaning.py --in=<infile> --out=<outfile> [--structurize]
+  cleaning.py --in=<infile> --out=<outfile> [--structurize] [--augment-data]
 
 Options:
   --in=<infile>    Input file with radiology reports
@@ -9,6 +9,7 @@ Options:
                    report id, and another with the report text.
   --out=<outfile>  Output file with cleaned radiology reports.
   --structurize    Apply additional structurize step.
+  --augment-data    Apply data augmentation step.
 """
 from docopt import docopt
 
@@ -26,6 +27,7 @@ if __name__ == '__main__':
     datafile = arguments['--in']
     outfile = arguments['--out']
     structurize = arguments['--structurize']
+    augmentData = arguments['--augment-data']
 
     print('Loading data...')
     rawfile = open(datafile, 'rb').read()
@@ -35,9 +37,43 @@ if __name__ == '__main__':
     print('Loading dictionaries...')
     full_parser = CleverParser('Data/clever_base_terminology.txt')
     full_parser.addTermDictionary('Data/clever_ext_leonard.txt')
+    full_parser.addTermDictionary('Data/clever_ext_lung_synonyms.txt')
+
+    parentParser = CleverParser('Data/clever_ext_parent.txt')
+    granPaParser = CleverParser('Data/clever_ext_grandparent.txt')
+
+    duplicateIds = df_cases.duplicated('id')
+    if len(df_cases[duplicateIds]) > 0:
+        print('WARNING: duplicate IDs were found on  %s'%datafile)
+        duplicateIdsList = df_cases[duplicateIds]['id'].tolist()
+        duplicateSet = list(set(duplicateIdsList))
+
+        for dupId in duplicateSet[:5]:
+            nDups = len(df_cases[df_cases['id']==dupId])
+            print('   ID %d has %d ocurrences'%(dupId, nDups))
+
 
     print('Applying text normalization...')
     df_cases['normalized'] = df_cases['transcript'].apply(lambda text: normalize(text, full_parser))
+
+    noDataAugmentation = True
+    if augmentData:
+        print('Applying data expansion...')
+        extended_cases_data = []
+
+        for index, row in df_cases.iterrows():
+            sentence = row['normalized']
+            allreps = parentParser.getAllPossibleReplacements(sentence, includeOriginal=True)
+            allreps+= granPaParser.getAllPossibleReplacements(sentence)
+
+            extended_sentence_data = [ { 'id': row['id'], 'normalized': rep} for rep in allreps ]
+            extended_cases_data += extended_sentence_data
+        df_cases = pd.DataFrame(extended_cases_data)
+    else:
+        print('Applying finalizing normalization...')
+        ancestorNormalizer = lambda sentence: parentParser.replacement(granPaParser.replacement(sentence))
+
+        df_cases['normalized'] = df_cases['normalized'].apply(ancestorNormalizer)
 
     print('Saving clean data...')
     df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC)

@@ -1,6 +1,8 @@
 import pandas as pd
 import trie_search
 
+from itertools import combinations
+
 class CleverParser():
     def __init__(self, cleverfile=None):
         self.__wordColumn__ = 'word'
@@ -21,10 +23,26 @@ class CleverParser():
         self.trie = trie_search.TrieSearch(clever_words)
 
     def getTokenForWord(self, word):
+        ''' NOTE: words are assumed to be unique ! '''
         tag = self.clever[self.clever[self.__wordColumn__]==word][self.__tokenColumn__].tolist()[0]
         return tag
 
     def replacement(self, sentence):
+        replacements = self._getReplacements(sentence)
+        newSentence = self._applyReplacements(replacements, sentence)
+        return newSentence
+
+    def getAllPossibleReplacements(self, sentence, includeOriginal=False):
+        all_replacements = self._getReplacements(sentence)
+        allPossible = [ sentence ] if includeOriginal else []
+
+        for r in range(len(all_replacements)):
+            for subsetReplacement in combinations(all_replacements, r+1):
+                newSentence = self._applyReplacements(subsetReplacement, sentence)
+                allPossible.append(newSentence)
+        return allPossible
+
+    def _getReplacements(self, sentence):
         replacements = []
 
         # Trie finds us a word from clever terminology in a sentence, and the index
@@ -37,11 +55,13 @@ class CleverParser():
             replacements.append((insertPoint, newWord))
             # We keep track of where in the sentence we want to replace the word, and
             # by which word we want to replace.
-        replacements = sorted(replacements)
+        return replacements
 
+    def _applyReplacements(self, replacements, sentence):
         # If no replacements are found, we keep the initial sentence
         newSentence = sentence
 
+        replacements = sorted(replacements)
         # We cut the sentence at the points where we found a replacement
         for i in range(len(replacements)):
             insertPoint, newWord = replacements[i]
