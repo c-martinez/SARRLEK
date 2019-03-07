@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     print('Loading data...')
     rawfile = open(datafile, 'rb').read()
-    encodeInfo = chardet.detect(rawfile[:10000])
+    encodeInfo = chardet.detect(rawfile[:50000])
     print('encodeInfo: ',encodeInfo)
     df_cases = pd.read_csv(datafile, encoding=encodeInfo['encoding'], names=['id', 'transcript'])
 
@@ -77,4 +77,4 @@ if __name__ == '__main__':
         df_cases['normalized'] = df_cases['normalized'].apply(ancestorNormalizer)
 
     print('Saving clean data...')
-    df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC)
+    df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
