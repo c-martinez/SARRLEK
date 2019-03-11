@@ -53,28 +53,36 @@ if __name__ == '__main__':
             nDups = len(df_cases[df_cases['id']==dupId])
             print('   ID %d has %d ocurrences'%(dupId, nDups))
 
-
     print('Applying text normalization...')
     df_cases['normalized'] = df_cases['transcript'].apply(lambda text: normalize(text, full_parser))
+    df_cases.drop(columns='transcript', inplace=True)
 
     noDataAugmentation = True
     if augmentData:
         print('Applying data expansion...')
-        extended_cases_data = []
 
-        for index, row in df_cases.iterrows():
-            sentence = row['normalized']
-            allreps = parentParser.getAllPossibleReplacements(sentence, includeOriginal=True)
-            allreps+= granPaParser.getAllPossibleReplacements(sentence)
+        print('Saving base data...')
+        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
 
-            extended_sentence_data = [ { 'id': row['id'], 'normalized': rep} for rep in allreps ]
-            extended_cases_data += extended_sentence_data
-        df_cases = pd.DataFrame(extended_cases_data)
+        with open(outfile, 'a', encoding=encodeInfo['encoding']) as fout:
+            print('Saving extended data')
+            for index, row in df_cases.iterrows():
+                sentence = row['normalized']
+                allreps = parentParser.getAllPossibleReplacements(sentence, includeOriginal=True)
+                allreps+= granPaParser.getAllPossibleReplacements(sentence)
+
+                extended_cases_data = [ { 'id': row['id'], 'normalized': rep} for rep in allreps ]
+                df_extended = pd.DataFrame(extended_cases_data)
+
+                if index % 100 == 0:
+                    print('.', end='', flush=True)
+                df_extended.to_csv(fout, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC)
+
     else:
         print('Applying finalizing normalization...')
         ancestorNormalizer = lambda sentence: parentParser.replacement(granPaParser.replacement(sentence))
 
         df_cases['normalized'] = df_cases['normalized'].apply(ancestorNormalizer)
 
-    print('Saving clean data...')
-    df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
+        print('Saving clean data...')
+        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
