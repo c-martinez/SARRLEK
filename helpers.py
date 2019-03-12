@@ -1,4 +1,5 @@
 import re
+import csv
 import pandas as pd
 
 from io import StringIO
@@ -132,3 +133,28 @@ def sparqlToTermDict(qry, endpoint="http://localhost:8890/sparql", keyColumn=Non
     df = sparqlToDataframe(qry)
     df = df.fillna('')
     return buildTermDict(df, keyColumn=keyColumn, nameCols=nameCols)
+
+class SentenceIterator(object):
+    def __init__(self, datafile, encoding, row2record):
+        '''
+        row2record   A function which takes a row and the row number from the CSV file,
+                     and returns a record in the format the consumer intends to use it.
+        '''
+        csvfile = open(datafile, encoding=encoding)
+        self.index = 0
+        self.csvreader = csv.reader(csvfile, delimiter=',')
+        self.row2record = row2record
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        try:
+            row = next(self.csvreader)
+            self.index += 1
+            if self.index % 1000 == 0:
+                print('.', end='', flush=True)
+            # return TaggedDocument(row[1].split(), [self.index])
+            return self.row2record(row, self.index)
+        except:
+            raise StopIteration
