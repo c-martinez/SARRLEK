@@ -71,7 +71,7 @@ class TorchNN():
         self.batch_size = batch_size
         self.loader = loader
         n_out = 2   # 2 classes
-        n_h  = 20
+        n_h  = 50
 
         # Create a model
         self.model = nn.Sequential(nn.Linear(self.n_in, n_h),
