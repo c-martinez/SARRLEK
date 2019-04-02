@@ -14,11 +14,10 @@ Options:
 from docopt import docopt
 
 import pandas as pd
-import chardet
 import csv
 
 from cleverparser import CleverParser
-from helpers import normalize
+from helpers import normalize, getEncoding
 
 
 if __name__ == '__main__':
@@ -30,10 +29,8 @@ if __name__ == '__main__':
     augmentData = arguments['--augment-data']
 
     print('Loading data...')
-    rawfile = open(datafile, 'rb').read()
-    encodeInfo = chardet.detect(rawfile[:50000])
-    print('encodeInfo: ',encodeInfo)
-    df_cases = pd.read_csv(datafile, encoding=encodeInfo['encoding'], names=['id', 'transcript'])
+    encoding = getEncoding(datafile)
+    df_cases = pd.read_csv(datafile, encoding=encoding, names=['id', 'transcript'])
 
     print('Loading dictionaries...')
     full_parser = CleverParser('Data/clever_base_terminology.txt')
@@ -62,9 +59,9 @@ if __name__ == '__main__':
         print('Applying data expansion...')
 
         print('Saving base data...')
-        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
+        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encoding)
 
-        with open(outfile, 'a', encoding=encodeInfo['encoding']) as fout:
+        with open(outfile, 'a', encoding=encoding) as fout:
             print('Saving extended data')
             for index, row in df_cases.iterrows():
                 sentence = row['normalized']
@@ -85,4 +82,4 @@ if __name__ == '__main__':
         df_cases['normalized'] = df_cases['normalized'].apply(ancestorNormalizer)
 
         print('Saving clean data...')
-        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encodeInfo['encoding'])
+        df_cases.to_csv(outfile, columns=['id', 'normalized'], header=False, index=False, quoting=csv.QUOTE_NONNUMERIC, encoding=encoding)

@@ -1,5 +1,6 @@
 import re
 import csv
+import chardet
 import pandas as pd
 
 from io import StringIO
@@ -158,3 +159,9 @@ class SentenceIterator(object):
             return self.row2record(row, self.index)
         except:
             raise StopIteration
+
+def getEncoding(datafile):
+    rawfile = open(datafile, 'rb').read()
+    encodeInfo = chardet.detect(rawfile[:50000])
+    print('encodeInfo: ',encodeInfo)
+    return encodeInfo['encoding']
