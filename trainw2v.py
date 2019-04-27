@@ -31,9 +31,9 @@ if __name__ == '__main__':
     c_classifier = TorchNN(c_loader, VECTOR_SIZE)
     p_classifier = TorchNN(p_loader, VECTOR_SIZE)
 
-    print('Training networks <ADD MORE EPOCHS ?>...')
-    c_classifier.train(1)
-    p_classifier.train(1)
+    print('Training networks...')
+    c_classifier.train(5000)
+    p_classifier.train(5000)
 
     print('Saving classifiers...')
     c_classifier.saveModel(cancerClassifierFileName)
